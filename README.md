@@ -21,4 +21,12 @@ More information can be found [here](https://docs.google.com/document/d/1mN3lAI8
 - Go to the directory where you wish to store
 - Use ```git clone https://github.com/tanker43/Camera-ReIdentification.git``` to clone to that directory
 - Create a python virtual environment with ```python -m venv venv```. (More information for python virtual enrionment can be found [here](https://docs.python.org/3/tutorial/venv.html))
-- Install the necessary dependencies with ```pip install -r requirements.txt```
+
+### 3. Install the necessary dependencies
+python -m pip install 
+
+pip install -r  imutils
+
+pip install opencv-python
+
+pip install mediapipe
