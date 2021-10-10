@@ -1,0 +1,143 @@
+Show configuration
+adam:
+  beta1: 0.9
+  beta2: 0.999
+cuhk03:
+  classic_split: False
+  labeled_images: False
+  use_metric_cuhk03: False
+data:
+  combineall: False
+  height: 256
+  k_tfm: 1
+  load_train_targets: False
+  norm_mean: [0.485, 0.456, 0.406]
+  norm_std: [0.229, 0.224, 0.225]
+  root: reid-data
+  save_dir: log
+  sources: ['market1501']
+  split_id: 0
+  targets: ['market1501']
+  transforms: ['random_flip']
+  type: image
+  width: 128
+  workers: 4
+loss:
+  name: softmax
+  softmax:
+    label_smooth: True
+  triplet:
+    margin: 0.3
+    weight_t: 1.0
+    weight_x: 0.0
+market1501:
+  use_500k_distractors: False
+model:
+  load_weights: 
+  name: resnet50
+  pretrained: True
+  resume: 
+rmsprop:
+  alpha: 0.99
+sampler:
+  num_cams: 1
+  num_datasets: 1
+  num_instances: 4
+  train_sampler: RandomSampler
+  train_sampler_t: RandomSampler
+sgd:
+  dampening: 0.0
+  momentum: 0.9
+  nesterov: False
+test:
+  batch_size: 100
+  dist_metric: euclidean
+  eval_freq: -1
+  evaluate: False
+  normalize_feature: False
+  ranks: [1, 5, 10, 20]
+  rerank: False
+  start_eval: 0
+  visrank: False
+  visrank_topk: 10
+train:
+  base_lr_mult: 0.1
+  batch_size: 32
+  fixbase_epoch: 0
+  gamma: 0.1
+  lr: 0.0003
+  lr_scheduler: single_step
+  max_epoch: 60
+  new_layers: ['classifier']
+  open_layers: ['classifier']
+  optim: adam
+  print_freq: 20
+  seed: 1
+  staged_lr: False
+  start_epoch: 0
+  stepsize: [20]
+  weight_decay: 0.0005
+use_gpu: False
+video:
+  pooling_method: avg
+  sample_method: evenly
+  seq_len: 15
+
+Collecting env info ...
+** System info **
+PyTorch version: 1.8.1
+Is debug build: False
+CUDA used to build PyTorch: 10.1
+ROCM used to build PyTorch: N/A
+
+OS: Microsoft Windows 10 Education
+GCC version: Could not collect
+Clang version: Could not collect
+CMake version: Could not collect
+
+Python version: 3.8 (64-bit runtime)
+Is CUDA available: False
+CUDA runtime version: No CUDA
+GPU models and configuration: No CUDA
+Nvidia driver version: No CUDA
+cuDNN version: No CUDA
+HIP runtime version: N/A
+MIOpen runtime version: N/A
+
+Versions of relevant libraries:
+[pip3] numpy==1.20.1
+[pip3] numpydoc==1.1.0
+[pip3] torch==1.8.1
+[pip3] torchreid==1.4.0
+[pip3] torchvision==0.9.1
+[conda] blas                      1.0                         mkl  
+[conda] cudatoolkit               10.1.243             h74a9793_0  
+[conda] mkl                       2021.2.0           haa95532_296  
+[conda] mkl-service               2.3.0            py38h2bbff1b_1  
+[conda] mkl_fft                   1.3.0            py38h277e83a_2  
+[conda] mkl_random                1.2.1            py38hf11a4ad_2  
+[conda] numpy                     1.20.1           py38h34a8a5c_0  
+[conda] numpy-base                1.20.1           py38haf7ebc8_0  
+[conda] numpydoc                  1.1.0              pyhd3eb1b0_1  
+[conda] pytorch                   1.8.1           py3.8_cuda10.1_cudnn7_0    PyTorch
+[conda] torchreid                 1.4.0                     dev_0    <develop>
+[conda] torchvision               0.9.1                py38_cu101    pytorch
+        Pillow (8.2.0)
+
+Building train transforms ...
++ resize to 256x128
++ random flip
++ to torch tensor of range [0, 1]
++ normalization (mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+Building test transforms ...
++ resize to 256x128
++ to torch tensor of range [0, 1]
++ normalization (mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+=> Loading train (source) dataset
+Creating directory "C:\Users\patron\Desktop\Demo2Pytorch\Demo2Pytorch\reid-data\market1501"
+Downloading Market1501 dataset to "C:\Users\patron\Desktop\Demo2Pytorch\Demo2Pytorch\reid-data\market1501"
+* url="http://188.138.127.15:81/Datasets/Market-1501-v15.09.15.zip"
+* destination="C:\Users\patron\Desktop\Demo2Pytorch\Demo2Pytorch\reid-data\market1501\Market-1501-v15.09.15.zip"
+[4;33mReloaded modules[24m: torchreid.utils.tools, torchreid.utils.rerank, torchreid.utils.loggers, torchreid.utils.avgmeter, torchreid.utils.reidtools, torchreid.utils.torchtools, torchreid.utils.model_complexity, torchreid.models.pcb, torchreid.models.mlfn, torchreid.models.hacnn, torchreid.models.osnet, torchreid.models.senet, torchreid.models.mudeep, torchreid.models.nasnet, torchreid.models.resnet, torchreid.models.densenet, torchreid.models.xception, torchreid.models.osnet_ain, torchreid.models.resnetmid, torchreid.models.shufflenet, torchreid.models.squeezenet, torchreid.models.inceptionv4, torchreid.models.mobilenetv2, torchreid.models.resnet_ibn_a, torchreid.models.resnet_ibn_b, torchreid.models.shufflenetv2, torchreid.models.inceptionresnetv2, torchreid.models, torchreid.utils.feature_extractor, torchreid.utils, torchreid.data.datasets.dataset, torchreid.data.datasets.image.grid, torchreid.data.datasets.image.prid, torchreid.data.datasets.image.ilids, torchreid.data.datasets.image.viper, torchreid.data.datasets.image.cuhk01, torchreid.data.datasets.image.cuhk02, torchreid.data.datasets.image.cuhk03, torchreid.data.datasets.image.msmt17, torchreid.data.datasets.image.cuhksysu, torchreid.data.datasets.image.sensereid, torchreid.data.datasets.image.market1501, torchreid.data.datasets.image.dukemtmcreid, torchreid.data.datasets.image.university1652, torchreid.data.datasets.image, torchreid.data.datasets.video.mars, torchreid.data.datasets.video.ilidsvid, torchreid.data.datasets.video.prid2011, torchreid.data.datasets.video.dukemtmcvidreid, torchreid.data.datasets.video, torchreid.data.datasets, torchreid.data.sampler, torchreid.data.transforms, torchreid.data.datamanager, torchreid.data, torchreid.optim.radam, torchreid.optim.optimizer, torchreid.optim.lr_scheduler, torchreid.optim, torchreid.metrics.rank_cylib, torchreid.metrics.rank_cylib.rank_cy, torchreid.metrics.rank, torchreid.metrics.accuracy, torchreid.metrics.distance, torchreid.metrics, torchreid.losses.cross_entropy_loss, torchreid.losses.hard_mine_triplet_loss, torchreid.losses, torchreid.engine.engine, torchreid.engine.image.softmax, torchreid.engine.image.triplet, torchreid.engine.image, torchreid.engine.video.softmax, torchreid.engine.video.triplet, torchreid.engine.video, torchreid.engine, torchreid, default_config[0m
+[4;33mReloaded modules[24m: torchreid.utils.tools, torchreid.utils.rerank, torchreid.utils.loggers, torchreid.utils.avgmeter, torchreid.utils.reidtools, torchreid.utils.torchtools, torchreid.utils.model_complexity, torchreid.models.pcb, torchreid.models.mlfn, torchreid.models.hacnn, torchreid.models.osnet, torchreid.models.senet, torchreid.models.mudeep, torchreid.models.nasnet, torchreid.models.resnet, torchreid.models.densenet, torchreid.models.xception, torchreid.models.osnet_ain, torchreid.models.resnetmid, torchreid.models.shufflenet, torchreid.models.squeezenet, torchreid.models.inceptionv4, torchreid.models.mobilenetv2, torchreid.models.resnet_ibn_a, torchreid.models.resnet_ibn_b, torchreid.models.shufflenetv2, torchreid.models.inceptionresnetv2, torchreid.models, torchreid.utils.feature_extractor, torchreid.utils, torchreid.data.datasets.dataset, torchreid.data.datasets.image.grid, torchreid.data.datasets.image.prid, torchreid.data.datasets.image.ilids, torchreid.data.datasets.image.viper, torchreid.data.datasets.image.cuhk01, torchreid.data.datasets.image.cuhk02, torchreid.data.datasets.image.cuhk03, torchreid.data.datasets.image.msmt17, torchreid.data.datasets.image.cuhksysu, torchreid.data.datasets.image.sensereid, torchreid.data.datasets.image.market1501, torchreid.data.datasets.image.dukemtmcreid, torchreid.data.datasets.image.university1652, torchreid.data.datasets.image, torchreid.data.datasets.video.mars, torchreid.data.datasets.video.ilidsvid, torchreid.data.datasets.video.prid2011, torchreid.data.datasets.video.dukemtmcvidreid, torchreid.data.datasets.video, torchreid.data.datasets, torchreid.data.sampler, torchreid.data.transforms, torchreid.data.datamanager, torchreid.data, torchreid.optim.radam, torchreid.optim.optimizer, torchreid.optim.lr_scheduler, torchreid.optim, torchreid.metrics.rank_cylib, torchreid.metrics.rank_cylib.rank_cy, torchreid.metrics.rank, torchreid.metrics.accuracy, torchreid.metrics.distance, torchreid.metrics, torchreid.losses.cross_entropy_loss, torchreid.losses.hard_mine_triplet_loss, torchreid.losses, torchreid.engine.engine, torchreid.engine.image.softmax, torchreid.engine.image.triplet, torchreid.engine.image, torchreid.engine.video.softmax, torchreid.engine.video.triplet, torchreid.engine.video, torchreid.engine, torchreid[0m
+[4;33mReloaded modules[24m: torchreid.utils.tools, torchreid.utils.rerank, torchreid.utils.loggers, torchreid.utils.avgmeter, torchreid.utils.reidtools, torchreid.utils.torchtools, torchreid.utils.model_complexity, torchreid.models.pcb, torchreid.models.mlfn, torchreid.models.hacnn, torchreid.models.osnet, torchreid.models.senet, torchreid.models.mudeep, torchreid.models.nasnet, torchreid.models.resnet, torchreid.models.densenet, torchreid.models.xception, torchreid.models.osnet_ain, torchreid.models.resnetmid, torchreid.models.shufflenet, torchreid.models.squeezenet, torchreid.models.inceptionv4, torchreid.models.mobilenetv2, torchreid.models.resnet_ibn_a, torchreid.models.resnet_ibn_b, torchreid.models.shufflenetv2, torchreid.models.inceptionresnetv2, torchreid.models, torchreid.utils.feature_extractor, torchreid.utils, torchreid.data.datasets.dataset, torchreid.data.datasets.image.grid, torchreid.data.datasets.image.prid, torchreid.data.datasets.image.ilids, torchreid.data.datasets.image.viper, torchreid.data.datasets.image.cuhk01, torchreid.data.datasets.image.cuhk02, torchreid.data.datasets.image.cuhk03, torchreid.data.datasets.image.msmt17, torchreid.data.datasets.image.cuhksysu, torchreid.data.datasets.image.sensereid, torchreid.data.datasets.image.market1501, torchreid.data.datasets.image.dukemtmcreid, torchreid.data.datasets.image.university1652, torchreid.data.datasets.image, torchreid.data.datasets.video.mars, torchreid.data.datasets.video.ilidsvid, torchreid.data.datasets.video.prid2011, torchreid.data.datasets.video.dukemtmcvidreid, torchreid.data.datasets.video, torchreid.data.datasets, torchreid.data.sampler, torchreid.data.transforms, torchreid.data.datamanager, torchreid.data, torchreid.optim.radam, torchreid.optim.optimizer, torchreid.optim.lr_scheduler, torchreid.optim, torchreid.metrics.rank_cylib, torchreid.metrics.rank_cylib.rank_cy, torchreid.metrics.rank, torchreid.metrics.accuracy, torchreid.metrics.distance, torchreid.metrics, torchreid.losses.cross_entropy_loss, torchreid.losses.hard_mine_triplet_loss, torchreid.losses, torchreid.engine.engine, torchreid.engine.image.softmax, torchreid.engine.image.triplet, torchreid.engine.image, torchreid.engine.video.softmax, torchreid.engine.video.triplet, torchreid.engine.video, torchreid.engine, torchreid[0m
